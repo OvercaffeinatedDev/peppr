@@ -10,10 +10,13 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-    container:
-      image: docker:dind
-      options: --privileged
     steps:
+      - name: Installs and configure Docker
+        run: |
+          curl -fsSL https://get.docker.com -o get-docker.sh
+          sh get-docker.sh
+          dockerd &
+          sleep 5
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Set up Node.js
