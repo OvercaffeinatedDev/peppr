@@ -9,12 +9,13 @@ on:
 
 jobs:
   release:
-    runs-on: docker
+    runs-on: ubuntu-latest
     steps:
-      - name: Installs and configure Node
+      - name: Start Docker daemon
         run: |
-          curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
-          apt-get install -y nodejs npm
+          sudo dockerd &
+          sleep 5
+          docker info
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Set up Node.js
