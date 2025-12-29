@@ -1,0 +1,13 @@
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Echo test start
+        run: echo "This will run tests on the PR changes... To be defined"
